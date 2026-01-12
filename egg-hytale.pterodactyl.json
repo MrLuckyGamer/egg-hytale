@@ -2,9 +2,9 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": "https://raw.githubusercontent.com/NATroutter/egg-hytale/refs/heads/main/egg-hytale.pterodactyl.json"
+        "update_url": "https:\/\/raw.githubusercontent.com\/NATroutter\/egg-hytale\/refs\/heads\/main\/egg-hytale.pterodactyl.json"
     },
-    "exported_at": "2026-01-12T19:09:20+02:00",
+    "exported_at": "2026-01-12T19:49:12+02:00",
     "name": "Hytale",
     "author": "contact@natroutter.fi",
     "description": "Hytale is a block-based sandbox game that blends creative building with RPG adventure. Explore procedurally generated worlds filled with unique biomes, dungeons, and creatures. Build anything from simple homes to grand castles, craft items, and battle monsters. Create custom content with built-in modding tools, host your own servers, and shape the experience with plugins and mods. Play solo or with friends in a world designed for both creation and exploration.\r\n\r\nCredits:\r\n- Made by NATroutter\r\n- https:\/\/natroutter.fi\r\n- https:\/\/github.com\/NATroutter",
@@ -12,19 +12,19 @@
         "java_version"
     ],
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:java_25": "ghcr.io\/parkervcp\/yolks:java_25"
+        "Java-25": "ghcr.io\/parkervcp\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": ".\/start.sh",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "startup": "{\r\n    \"done\": \"Done!\"\r\n}",
         "logs": "{}",
         "stop": "stop"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\nDOWNLOAD_URL=\"https:\/\/downloader.hytale.com\/hytale-downloader.zip\"\r\nDOWNLOAD_FILE=\"hytale-downloader.zip\"\r\n\r\napt update\r\napt install -y curl unzip\r\n\r\ncd \/mnt\/server\r\n\r\n# Downloads and extracts the Hytale downloader\r\necho \"Starting Hytale downloader installation...\"\r\n\r\n# Download the file\r\necho \"Downloading hytale-downloader.zip...\"\r\ncurl -L -o \"${DOWNLOAD_FILE}\" \"${DOWNLOAD_URL}\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to download ${DOWNLOAD_URL}\"\r\n    exit 1\r\nfi\r\n\r\necho \"Download completed successfully.\"\r\n\r\n# Extract the zip file\r\necho \"Extracting ${DOWNLOAD_FILE}...\"\r\nunzip -o \"${DOWNLOAD_FILE}\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to extract ${DOWNLOAD_FILE}\"\r\n    exit 1\r\nfi\r\n\r\necho \"Extraction completed successfully.\"\r\n\r\n# Remove the unnessasery file\r\necho \"Cleaning up...\"\r\nrm \"${DOWNLOAD_FILE}\"\r\nrm QUICKSTART.md\r\nrm hytale-downloader-windows-amd64.exe\r\n\r\necho \"Downloading start.sh script...\"\r\ncurl -L -o start.sh \"https:\/\/raw.githubusercontent.com\/NATroutter\/egg-hytale\/main\/start.sh\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to download start.sh\"\r\n    exit 1\r\nfi\r\n\r\necho \"Setting executable permissions...\"\r\nchmod +x .\/hytale-downloader-linux-amd64\r\nchmod +x .\/start.sh\r\n\r\necho \"Running Hytale downloader...\"\r\n.\/hytale-downloader-linux-amd64\r\n\r\necho \"Installation complete!\"",
+            "script": "#!\/bin\/bash\r\nDOWNLOAD_URL=\"https:\/\/downloader.hytale.com\/hytale-downloader.zip\"\r\nDOWNLOAD_FILE=\"hytale-downloader.zip\"\r\n\r\napt update\r\napt install -y curl unzip\r\n\r\ncd \/mnt\/server\r\n\r\n# Downloads and extracts the Hytale downloader\r\necho \"Starting Hytale downloader installation...\"\r\n\r\n# Download the file\r\necho \"Downloading hytale-downloader.zip...\"\r\ncurl -L -o \"${DOWNLOAD_FILE}\" \"${DOWNLOAD_URL}\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to download ${DOWNLOAD_URL}\"\r\n    exit 1\r\nfi\r\n\r\necho \"Download completed successfully.\"\r\n\r\n# Extract the zip file\r\necho \"Extracting ${DOWNLOAD_FILE}...\"\r\nunzip -o \"${DOWNLOAD_FILE}\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to extract ${DOWNLOAD_FILE}\"\r\n    exit 1\r\nfi\r\n\r\necho \"Extraction completed successfully.\"\r\n\r\n# Remove the unnessasery file\r\necho \"Cleaning up...\"\r\nrm \"${DOWNLOAD_FILE}\"\r\nrm QUICKSTART.md\r\nrm hytale-downloader-windows-amd64.exe\r\n\r\necho \"Downloading start.sh script...\"\r\ncurl -L -o start.sh \"https:\/\/raw.githubusercontent.com\/NATroutter\/egg-hytale\/main\/start.sh\"\r\n\r\nif [ $? -ne 0 ]; then\r\n    echo \"Error: Failed to download start.sh\"\r\n    exit 1\r\nfi\r\n\r\necho \"Setting executable permissions...\"\r\nchmod +x .\/hytale-downloader-linux-amd64\r\nchmod +x .\/start.sh\r\n\r\necho \"Installation complete!\"",
             "container": "ghcr.io\/pterodactyl\/installers:debian",
             "entrypoint": "bash"
         }
@@ -57,7 +57,7 @@
             "default_value": "Assets.zip",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string|regex:\/^([\\w\\d._-]+)(\\.zip)$\/",
+            "rules": "nullable|string|regex:\/^([\\w\\d._-]+)(\\.zip)$\/",
             "field_type": "text"
         },
         {
@@ -127,7 +127,7 @@
             "default_value": "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {

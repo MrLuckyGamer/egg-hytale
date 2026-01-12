@@ -2,9 +2,9 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": "https://raw.githubusercontent.com/NATroutter/egg-hytale/refs/heads/main/egg-hytale.pelican.json"
+        "update_url": "https://raw.githubusercontent.com/NATroutter/egg-hytale/refs/heads/main/egg-hytale.json"
     },
-    "exported_at": "2026-01-11T22:23:30+00:00",
+    "exported_at": "2026-01-12T17:49:33+00:00",
     "name": "Hytale",
     "author": "contact@natroutter.fi",
     "uuid": "6594b287-2d7b-4249-bc93-4d40283c57e3",
@@ -25,13 +25,13 @@
     },
     "config": {
         "files": "{}",
-        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "startup": "{\n    \"done\": \"Done!\"\n}",
         "logs": "{}",
         "stop": "stop"
     },
     "scripts": {
         "installation": {
-            "script": "#!/bin/bash\nPROJECT=hytale\nDOWNLOAD_URL=\"https://downloader.hytale.com/hytale-downloader.zip\"\nDOWNLOAD_FILE=\"hytale-downloader.zip\"\n\napt update\napt install -y curl unzip\n\ncd /mnt/server\n\n# Downloads and extracts the Hytale downloader\necho \"Starting Hytale downloader installation...\"\n\n# Download the file\necho \"Downloading hytale-downloader.zip...\"\ncurl -L -o \"${DOWNLOAD_FILE}\" \"${DOWNLOAD_URL}\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to download ${DOWNLOAD_URL}\"\n    exit 1\nfi\n\necho \"Download completed successfully.\"\n\n# Extract the zip file\necho \"Extracting ${DOWNLOAD_FILE}...\"\nunzip -o \"${DOWNLOAD_FILE}\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to extract ${DOWNLOAD_FILE}\"\n    exit 1\nfi\n\necho \"Extraction completed successfully.\"\n\n# Remove the unnessasery file\necho \"Cleaning up...\"\nrm \"${DOWNLOAD_FILE}\"\nrm QUICKSTART.md\nrm hytale-downloader-windows-amd64.exe\n\necho \"Downloading start.sh script...\"\ncurl -L -o start.sh \"https://raw.githubusercontent.com/NATroutter/egg-hytale/main/start.sh\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to download start.sh\"\n    exit 1\nfi\n\necho \"Setting executable permissions...\"\nchmod +x ./hytale-downloader-linux-amd64\nchmod +x ./start.sh\n\necho \"Running Hytale downloader...\"\n./hytale-downloader-linux-amd64\n\necho \"Installation complete!\"",
+            "script": "#!/bin/bash\nDOWNLOAD_URL=\"https://downloader.hytale.com/hytale-downloader.zip\"\nDOWNLOAD_FILE=\"hytale-downloader.zip\"\n\napt update\napt install -y curl unzip\n\ncd /mnt/server\n\n# Downloads and extracts the Hytale downloader\necho \"Starting Hytale downloader installation...\"\n\n# Download the file\necho \"Downloading hytale-downloader.zip...\"\ncurl -L -o \"${DOWNLOAD_FILE}\" \"${DOWNLOAD_URL}\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to download ${DOWNLOAD_URL}\"\n    exit 1\nfi\n\necho \"Download completed successfully.\"\n\n# Extract the zip file\necho \"Extracting ${DOWNLOAD_FILE}...\"\nunzip -o \"${DOWNLOAD_FILE}\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to extract ${DOWNLOAD_FILE}\"\n    exit 1\nfi\n\necho \"Extraction completed successfully.\"\n\n# Remove the unnessasery file\necho \"Cleaning up...\"\nrm \"${DOWNLOAD_FILE}\"\nrm QUICKSTART.md\nrm hytale-downloader-windows-amd64.exe\n\necho \"Downloading start.sh script...\"\ncurl -L -o start.sh \"https://raw.githubusercontent.com/NATroutter/egg-hytale/main/start.sh\"\n\nif [ $? -ne 0 ]; then\n    echo \"Error: Failed to download start.sh\"\n    exit 1\nfi\n\necho \"Setting executable permissions...\"\nchmod +x ./hytale-downloader-linux-amd64\nchmod +x ./start.sh\n\necho \"Installation complete!\"",
             "container": "ghcr.io/pelican-eggs/installers:debian",
             "entrypoint": "bash"
         }
@@ -72,7 +72,8 @@
             "user_editable": true,
             "rules": [
                 "string",
-                "regex:/^([\\w\\d._-]+)(\\.zip)$/"
+                "regex:/^([\\w\\d._-]+)(\\.zip)$/",
+                "nullable"
             ],
             "sort": 2
         },
@@ -164,7 +165,8 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": [
-                "string"
+                "string",
+                "nullable"
             ],
             "sort": 11
         },

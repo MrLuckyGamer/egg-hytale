@@ -40,7 +40,6 @@ if [ "${AUTOMATIC_UPDATE}" = "1" ]; then
     $DOWNLOADER
 fi
 
-
 echo "Starting Hytale server..."
 
 # Build the Java command
@@ -69,14 +68,14 @@ if [ -n "${ASSET_PACK}" ] && [[ "${ASSET_PACK}" == *.zip ]]; then
 fi
 
 # Add accept-early-plugins flag if variable is set
-if [ -n "${ACCEPT_EARLY_PLUGINS}" ]; then
+if [ "${ACCEPT_EARLY_PLUGINS}" = "1" ]; then
     JAVA_CMD="${JAVA_CMD} --accept-early-plugins"
 fi
 
 JAVA_CMD="${JAVA_CMD} --auth-mode ${AUTH_MODE}"
 
 # Add allow-op flag if variable is set
-if [ -n "${ALLOW_OP}" ]; then
+if [ "${ALLOW_OP}" = "1" ]; then
     JAVA_CMD="${JAVA_CMD} --allow-op"
 fi
 
