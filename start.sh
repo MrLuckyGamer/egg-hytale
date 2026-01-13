@@ -40,6 +40,13 @@ if [ "${AUTOMATIC_UPDATE}" = "1" ]; then
     $DOWNLOADER
 fi
 
+# Check if server files were downloaded correctly
+if [ ! -f "HytaleServer.jar" ]; then
+    echo "Error: HytaleServer.jar not found!"
+    echo "Server files were not downloaded correctly."
+    exit 1
+fi
+
 # Obtain authentication tokens
 echo "Obtaining authentication tokens..."
 
