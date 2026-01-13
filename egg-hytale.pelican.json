@@ -2,9 +2,9 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": "https://raw.githubusercontent.com/NATroutter/egg-hytale/refs/heads/main/egg-hytale.pelican.json"
+        "update_url": "https://cdn.nat.gg/egg/egg-hytale.pelican.json"
     },
-    "exported_at": "2026-01-13T13:37:49+00:00",
+    "exported_at": "2026-01-13T13:55:29+00:00",
     "name": "Hytale",
     "author": "contact@natroutter.fi",
     "uuid": "6594b287-2d7b-4249-bc93-4d40283c57e3",
@@ -57,7 +57,7 @@
         {
             "name": "Allow Operators",
             "description": "Do you wish to allow operators or not",
-            "env_variable": "ALLOW_OPERATORS",
+            "env_variable": "ALLOW_OP",
             "default_value": "1",
             "user_viewable": true,
             "user_editable": true,
