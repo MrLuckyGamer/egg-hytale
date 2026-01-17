@@ -10,8 +10,6 @@
 # Pelican or Pterodactyl panel instead.
 ################################################################################
 
-echo "Starting Hytale server..."
-
 # Build the Java command
 JAVA_CMD="java"
 

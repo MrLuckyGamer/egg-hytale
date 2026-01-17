@@ -42,6 +42,10 @@ COPY --chmod=755 ./entrypoint.sh /entrypoint.sh
 # Strip Windows line endings (\r) just in case the file was edited on Windows
 RUN sed -i 's/\r$//' /entrypoint.sh
 
+# Copy lib directory
+COPY --chmod=755 ./lib /lib
+RUN sed -i 's/\r$//' /lib/*.sh
+
 # Create the container user
 RUN useradd -m -d /home/container -s /bin/bash container
 
