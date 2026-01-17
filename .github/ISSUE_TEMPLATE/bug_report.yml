@@ -1,0 +1,107 @@
+name: Bug Report
+description: Report a bug or issue with the Hytale Server Egg
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below to help us investigate.
+
+  - type: dropdown
+    id: panel
+    attributes:
+      label: Panel Type
+      description: Which panel are you using?
+      options:
+        - Pelican Panel
+        - Pterodactyl Panel
+    validations:
+      required: true
+
+  - type: input
+    id: panel-version
+    attributes:
+      label: Panel Version
+      description: What version of the panel are you running?
+      placeholder: e.g., 1.11.5
+    validations:
+      required: true
+
+  - type: input
+    id: wings-version
+    attributes:
+      label: Wings Version
+      description: What version of Wings (daemon) are you running?
+      placeholder: e.g., 1.11.8
+    validations:
+      required: true
+
+  - type: dropdown
+    id: architecture
+    attributes:
+      label: Server Architecture
+      description: What architecture is your server running on?
+      options:
+        - x86_64 (amd64)
+        - aarch64 (arm64)
+        - Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: When does the issue occur?
+      description: At what stage does the problem happen?
+      options:
+        - During egg installation
+        - During first-time authentication
+        - During server file download
+        - During server startup
+        - While server is running
+        - During server update
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console Logs
+      description: |
+        Please paste any relevant console output or error messages.
+        This will be automatically formatted as code.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here (screenshots, configuration changes, etc.)
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to make sure this bug hasn't already been reported
+          required: true
+        - label: I have verified that I own Hytale on the account I'm using for authentication
+          required: true
+        - label: I am using the latest version of the egg
+          required: true
