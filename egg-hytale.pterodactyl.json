@@ -261,6 +261,16 @@
             "field_type": "text"
         },
         {
+            "name": "Unencrypted Auth Session",
+            "description": "Enable it to store the Authorization Session as a token in the root server. Needed if the server is not able to store an encrypted auth session. Intended for game server providers.",
+            "env_variable": "UNENCRYPTED_AUTH_SESSION",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
             "name": "Override Session Token",
             "description": "Optional session token used to override the normal server authentication process. This option only takes effect when both override tokens are set. If left empty, the server will request authentication on startup. Intended for game server providers.",
             "env_variable": "OVERRIDE_SESSION_TOKEN",

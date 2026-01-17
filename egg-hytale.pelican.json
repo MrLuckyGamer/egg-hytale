@@ -310,6 +310,18 @@
             "sort": 24
         },
         {
+          "name": "Unencrypted Auth Session",
+          "description": "Enable it to store the Authorization Session as a token in the root server. Needed if the server is not able to store an encrypted auth session. Intended for game server providers.",
+          "env_variable": "UNENCRYPTED_AUTH_SESSION",
+          "default_value": "0",
+          "user_viewable": true,
+          "user_editable": true,
+          "rules": [
+            "boolean"
+          ],
+          "sort": 23
+        },
+        {
             "name": "Patchline",
             "description": "What release channel you want to use",
             "env_variable": "PATCHLINE",
