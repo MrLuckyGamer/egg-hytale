@@ -78,8 +78,9 @@ When a new version of the egg is released, follow these steps to update:
 
 1. Download the latest [egg-hytale.pelican.json](egg-hytale.pelican.json) file from this repository
 2. In your Pelican Panel, navigate to **Admin Panel** > **Eggs**
-3. Click **Import** on the top right
-4. Upload the new egg file and click **Import**
+3. Click **Import** on top right
+4. Select the downloaded JSON file and click **Submit**
+5. You are done!
 
 ### Pterodactyl Panel
 
@@ -88,6 +89,7 @@ When a new version of the egg is released, follow these steps to update:
 3. Click on the nest where hytale egg is imported
 4. Click on the hytale egg to open it
 5. On top of the page there update egg section where you can select the new egg Click **Update Egg**
+6. You are done!
 
 ## Server Configuration
 
